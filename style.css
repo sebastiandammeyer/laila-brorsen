@@ -220,10 +220,14 @@ p{color:var(--muted)}
 
 .contact-box{
   margin-top:16px;
-  padding:16px;
-  border-radius:var(--radius);
-  border:1px solid var(--line);
-  background:#fff;
+}
+.contact-box div{
+  margin-bottom:6px;
+  font-size:15px;
+}
+
+.contact-box strong{
+  font-weight:600;
 }
 
 /* Footer */
@@ -301,4 +305,74 @@ p{color:var(--muted)}
 .medium{
   max-width: 900px;
   margin: 0 auto;
+}
+.map-section{
+  margin-top: 28px;
+}
+
+.map-wrapper{
+  margin: 14px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.map-wrapper iframe{
+  width:100%;
+  height:300px;
+  border:0;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 480px;
+  grid-template-rows: auto auto;       /* 2 rækker */
+  gap: 18px 40px;                      /* row gap, col gap */
+  align-items:start;
+}
+
+/* Placer overskrift i venstre kolonne, række 1 */
+.contact-title{
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;                           /* fjerner default luft */
+}
+
+/* Placer kort i højre kolonne, række 1-2 (spænder ned) */
+.map-box{
+  grid-column: 2;
+  grid-row: 1 / span 2;                /* starter ved titel-linjen */
+  border-radius: var(--radius);
+  overflow:hidden;
+  border:1px solid var(--line);
+  height: 420px;
+}
+
+/* Venstre indhold under titlen */
+.contact-info{
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 65ch;
+}
+
+/* mobil */
+@media (max-width: 900px){
+  .contact-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .map-box{
+    grid-column: 1;
+    grid-row: auto;
+    height: 280px;
+  }
+  .contact-title,
+  .contact-info{
+    grid-column: 1;
+  }
+}
+.map-box iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
